@@ -17,6 +17,12 @@ public static class Config
 		 grant_type => client_credentials,
 		 scope => testapis
 		 */
+        /*
+		 scopes => [
+			"weatherapi.read", 
+			"weatherapi.write"
+		 ]
+		 */
         return new List<TestUser>
 		{
 			new TestUser
@@ -26,12 +32,12 @@ public static class Config
 				Password = "cristian",
 				Claims =
 				{
-					new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                    new Claim(JwtClaimTypes.GivenName, "Alice"),
-                    new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                    new Claim(JwtClaimTypes.Email, "alice@mail.com"),
+					new Claim(JwtClaimTypes.Name, "Cristian Pisco"),
+                    new Claim(JwtClaimTypes.GivenName, "Cristian"),
+                    new Claim(JwtClaimTypes.FamilyName, "Pisco"),
+                    new Claim(JwtClaimTypes.Email, "cristian.pisco@outlook.com"),
                     new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                    new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
+                    new Claim(JwtClaimTypes.WebSite, "http://cristianpisco.dev"),
                 }
 			}
 		};
@@ -40,11 +46,11 @@ public static class Config
 	{
 		return new List<ApiScope>
 		{
-			new ApiScope(name: "read",             displayName: "Read your data."),
-			new ApiScope(name: "write",            displayName: "Write your data."),
-			new ApiScope(name: "delete",           displayName: "Delete your data."),
-            new ApiScope(name: "weatherapi.read",  displayName: "Read weather data."),
-            new ApiScope(name: "weatherapi.write", displayName: "Write weather data."),
+			//new ApiScope(name: "read",             displayName: "Read your data."),
+			//new ApiScope(name: "write",            displayName: "Write your data."),
+			//new ApiScope(name: "delete",           displayName: "Delete your data."),
+            //new ApiScope(name: "weatherapi.read",  displayName: "Read weather data."),
+            //new ApiScope(name: "weatherapi.write", displayName: "Write weather data."),
             new ApiScope(name: "test_api",         displayName: "Test API Scope.")
 		};
 	}
@@ -58,7 +64,8 @@ public static class Config
 				ClientName = "Client Credentials",
 				AllowedGrantTypes = GrantTypes.ClientCredentials,
 				ClientSecrets = { new Secret("secreto".Sha256()) },
-				AllowedScopes = { "weatherapi.read", "weatherapi.write" }
+                AllowedScopes = { "test_api" }
+				//AllowedScopes = { "weatherapi.read", "weatherapi.write" }
 			}
 		};
 	}
